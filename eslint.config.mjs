@@ -32,9 +32,9 @@ export default defineConfig([
     extends: [cypress.configs.recommended],
   },
   {
-    files: ['cypress/support/commands.ts'],
+    files: ['cypress/support/**/*.d.ts'],
     rules: {
-      // Custom commands extend Cypress's global Chainable interface.
+      // Declaration files extend Cypress's global Chainable interface.
       '@typescript-eslint/no-namespace': ['error', { allowDeclarations: true }],
     },
   },
