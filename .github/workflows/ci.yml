@@ -1,0 +1,52 @@
+name: CI
+
+on:
+  pull_request:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  check-and-test:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 10
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v7
+        with:
+          persist-credentials: false
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v7
+        with:
+          node-version-file: .nvmrc
+          cache: npm
+
+      - name: Verify Chrome is available
+        # Google Chrome is preinstalled on the GitHub-hosted Ubuntu 24.04 image.
+        run: google-chrome --version
+
+      - name: Install locked dependencies
+        run: npm ci
+
+      - name: Run static checks
+        run: npm run check
+
+      - name: Ensure Cypress binary is installed
+        run: npm exec -- cypress install
+
+      - name: Run Cypress suite in Chrome
+        id: cypress
+        run: npm test
+
+      - name: Upload Cypress failure screenshots
+        if: ${{ failure() && steps.cypress.outcome == 'failure' }}
+        uses: actions/upload-artifact@v7
+        with:
+          name: cypress-failure-screenshots
+          path: cypress/screenshots/
+          if-no-files-found: ignore
+          retention-days: 7
