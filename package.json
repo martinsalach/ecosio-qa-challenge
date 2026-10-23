@@ -1,0 +1,36 @@
+{
+  "name": "ecosio-qa-challenge",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Cypress and TypeScript end-to-end tests for SauceDemo",
+  "license": "MIT",
+  "scripts": {
+    "cy:open": "cypress open --e2e --browser chrome",
+    "cy:run": "cypress run --e2e --browser chrome",
+    "test": "npm run cy:run",
+    "lint": "eslint . --max-warnings 0",
+    "lint:fix": "eslint . --fix --max-warnings 0",
+    "check": "npm run lint && npm run typecheck && npm run format:check",
+    "typecheck": "tsc --noEmit",
+    "format": "prettier --write .",
+    "format:check": "prettier --check ."
+  },
+  "engines": {
+    "node": "^22.13.0 || ^24.0.0"
+  },
+  "devDependencies": {
+    "@eslint/js": "^10.0.1",
+    "@types/node": "^24.19.2",
+    "cypress": "^16.2.0",
+    "eslint": "^10.13.0",
+    "eslint-config-prettier": "^10.1.8",
+    "eslint-plugin-chai-friendly": "^1.2.1",
+    "eslint-plugin-cypress": "^7.0.2",
+    "eslint-plugin-no-only-tests": "^3.4.0",
+    "globals": "^17.13.0",
+    "pdf-parse": "^2.4.5",
+    "prettier": "^3.9.10",
+    "typescript": "~6.0.3",
+    "typescript-eslint": "^8.72.0"
+  }
+}
