@@ -18,12 +18,16 @@ export default {
   },
   productDetails: {
     backToProductsBtn: '[data-test="back-to-products"]',
+    addToCartBtn: '[data-test="add-to-cart"]',
+    removeBtn: '[data-test="remove"]',
   },
   cart: {
     link: '[data-test="shopping-cart-link"]',
     badge: '[data-test="shopping-cart-badge"]',
     item: '[data-test="inventory-item"]',
     quantity: '[data-test="item-quantity"]',
+    continueShoppingBtn: '[data-test="continue-shopping"]',
+    removeBtn: '[data-test^="remove-"]',
   },
   menu: {
     openBtn: '#react-burger-menu-btn',
