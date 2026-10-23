@@ -1,0 +1,17 @@
+{
+  "bikeLightOnly": {
+    "subtotal": "9.99",
+    "tax": "0.80",
+    "total": "10.79"
+  },
+  "afterCartRemoval": {
+    "subtotal": "9.99",
+    "tax": "0.80",
+    "total": "10.79"
+  },
+  "multipleItems": {
+    "subtotal": "39.98",
+    "tax": "3.20",
+    "total": "43.18"
+  }
+}
